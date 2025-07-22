@@ -1,10 +1,4 @@
-name: app_environment
-channels:
-  - snowflake
-  - conda-forge
-dependencies:
-  - python=3.9.*
-  - snowflake-snowpark-python
-  - pip
-  - pip:
-      - streamlit
+# requirements.txt
+snowflake-snowpark-python
+streamlit
+requests
