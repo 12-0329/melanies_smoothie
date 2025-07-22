@@ -25,26 +25,15 @@ ingredients_list = st.multiselect(
 )
 
 if ingredients_list:
-    # Join the selected ingredients into a string
-    ingredients_string = ', '.join(ingredients_list)
-    submitted = st.button('Submit')
-    if submitted:
-        st.success("Your smoothie is ordered!")
-        # Display the selected ingredients
-        st.write("Selected ingredients:", ingredients_string)
+    ingredients_string = ''
 
-        # Create the SQL insert statement with proper escaping
-        my_insert_stmt = f"INSERT INTO smoothies.public.orders(name_on_order, ingredients) VALUES ('{name_on_order}', '{ingredients_string}')"
-
-        # Execute the SQL insert statement
-        session.sql(my_insert_stmt).collect()
-
-        # Display the SQL insert statement
-        st.write("SQL insert statement executed:", my_insert_stmt)
+    for fruit_chosen in ingredienst_list:
+        ingredients_String += fruit_chosen + ' '
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
 st.stop()
 
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response).json()
 sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
