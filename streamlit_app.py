@@ -1,6 +1,5 @@
 # Import python packages
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col,when_matched
 
 # Write directly to the app
@@ -12,6 +11,9 @@ st.write('The name on your Smoothie will be:', name_on_order)
 
 # Get the active session
 session = get_active_session()
+
+cnx = st.connection("snowflake")
+session = cnx.session()
 
 # Access the fruit options table
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME')).to_pandas()
