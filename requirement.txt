@@ -1,5 +1,5 @@
-snowflake-snowpark-python
-streamlit
+
+pip install snowflake-snowpark-python
 
 name: app_environment
 channels:
