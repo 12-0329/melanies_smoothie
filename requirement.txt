@@ -1,10 +1,10 @@
-
-pip install snowflake-snowpark-python
-
 name: app_environment
 channels:
   - snowflake
+  - conda-forge
 dependencies:
-  - python=3.11.*
-  - snowflake-snowpark-python=
-  - streamlit=
+  - python=3.9.*
+  - snowflake-snowpark-python
+  - pip
+  - pip:
+      - streamlit
